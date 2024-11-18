@@ -14,10 +14,10 @@ const ContactList = () => {
   
   return (
     <div>
-      {error && (<p>Ooops, something went wrong. Please, try again later.</p>)}
+      {error && (<p className={css.contactListMsg}>Ooops, something went wrong. Please, try again later.</p>)}
       {loading && (<Loader />)}
       {Array.isArray(filteredContacts) && filteredContacts.length === 0 && (
-        <p>There are no contacts in your phonebook yet</p>
+        <p className={css.contactListMsg}>There are no contacts in your phonebook yet</p>
       )
       }
       <ul className={css.contactList}>

@@ -9,7 +9,7 @@ const SearchBox = () => {
  
   const dispatch = useDispatch();
   return (
-    <div>
+    <div className={css.searchBoxContainer}>
       <label className={css.label}>
         <div className={css.labelName}>Find contacts by name</div>
         <input className={css.input} type="text" value={selectNameFilter} onChange={(e) => {

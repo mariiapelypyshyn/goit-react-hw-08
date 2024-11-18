@@ -7,7 +7,7 @@ const linkClasses = ({ isActive }) => {
 };
  const AuthNav = () => {
   return (
-    <div>
+    <div className={css.authNavContainer}>
       <NavLink className={linkClasses} to="/register">
         Register
       </NavLink>
