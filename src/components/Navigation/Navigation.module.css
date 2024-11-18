@@ -1,0 +1,19 @@
+.navLinks {
+  display: flex;
+  gap: 50px;
+}
+
+.link {
+  color: currentColor;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.link:hover {
+  transform: scale(1.1);
+  color: rgb(63, 175, 220);
+}
+
+.active {
+  color: rgb(63, 175, 220);
+}

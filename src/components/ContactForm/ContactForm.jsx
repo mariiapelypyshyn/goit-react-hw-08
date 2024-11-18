@@ -2,29 +2,18 @@ import { Form, Formik, Field, ErrorMessage } from 'formik'
 import { AddContactSchema } from '../../utils/contactform';
 import css from "./ContactForm.module.css";
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contactsOps';
-
+import { addContact } from '../../redux/contacts/operations';
 
 const INITIAL_VALUES = {
     name: "",
     number: "",
 }
 
-
-
 const ContactForm = () => {
     const dispatch = useDispatch();
-
-     const onnAddContact = (formData) => {
-    const finalUser = {
-      
-      ...formData,
-         }
-         dispatch(addContact(finalUser));
-    };
     
     const handleSubmit = (values, actions) => {
-        onnAddContact(values);
+        dispatch(addContact(values));
         actions.resetForm();
     }
   

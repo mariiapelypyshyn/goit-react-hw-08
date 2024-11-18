@@ -1,11 +1,10 @@
-import { createSelector, createSlice } from '@reduxjs/toolkit'
-import { fetchContacts } from './contactsOps';
-import { addContact } from './contactsOps';
-import { deleteContact } from './contactsOps';
-import { selectIsContacts, selectFilter } from './selectors';
+import {  createSlice, createSelector } from '@reduxjs/toolkit'
+import { addContact, deleteContact, fetchContacts } from './operations';
+import { selectIsContacts } from './selectors';
+import { selectFilter } from '../filters/selectors';
 
 
-export const selectFilteredContacts = createSelector(
+ export const selectFilteredContacts = createSelector(
 [ selectIsContacts, selectFilter],
  (contacts, filter) => {
    return Array.isArray(contacts) && contacts.filter(contact => contact.name.toLowerCase()
@@ -15,8 +14,7 @@ export const selectFilteredContacts = createSelector(
 
 const INITIAL_STATE = {
 
-    items:
-        [],
+    items: null,
      loading: false,
     error: null,
 	
@@ -39,11 +37,11 @@ const INITIAL_STATE = {
       })
          
        .addCase(addContact.pending, state => {
-        state.loading = true;
+          state.loading = true;
+          state.error = null;
        })
      .addCase(addContact.fulfilled, (state, action) => {
         state.loading = false;
-        state.error = null;
         state.items.push(action.payload);
      })
      .addCase(addContact.rejected, (state, action) => {
@@ -53,10 +51,10 @@ const INITIAL_STATE = {
          
      .addCase(deleteContact.pending, state => {
         state.loading = true;
+         state.error = null;
      })
       .addCase(deleteContact.fulfilled, (state, action) => {
         state.loading = false;
-         state.error = null;
           state.items = state.items.filter(item => item.id !== action.payload.id);
       })
      .addCase(deleteContact.rejected, (state, action) => {
