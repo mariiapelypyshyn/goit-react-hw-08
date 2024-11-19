@@ -16,7 +16,7 @@ dispatch(fetchContacts())
   return (
     <div>
       <ContactForm />
-       <SearchBox/>
+      <SearchBox />
       <ContactList />
      
     </div>

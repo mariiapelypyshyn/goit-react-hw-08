@@ -4,7 +4,10 @@ import axios from "axios";
 
 export const fetchContacts = createAsyncThunk(
     "contacts/fetchAll",
-    async (_, thunkApi) => {
+  async (_, thunkApi) => {
+       const state = thunkApi.getState();
+    const token = state.auth.token;
+    axios.defaults.headers.common['Authorization'] = token;
         try {
             const {data} = await axios.get("/contacts");
             console.log('data: ', data);

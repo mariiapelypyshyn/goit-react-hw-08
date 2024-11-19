@@ -17,7 +17,7 @@ const INITIAL_STATE = {
              state.loading = true;
              state.error = null;
          })
-         .addCase(fetchContacts.fulfilled, (state, action) => {
+        .addCase(fetchContacts.fulfilled, (state, action) => {
              state.loading = false;
              state.items = action.payload;
          })
