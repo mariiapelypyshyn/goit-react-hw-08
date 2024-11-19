@@ -1,4 +1,3 @@
-
 import css from './AppBar.module.css';
 import Navigation from '../Navigation/Navigation';
 import UserMenu from '../UserMenu/UserMenu';
